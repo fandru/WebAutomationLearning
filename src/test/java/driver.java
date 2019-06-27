@@ -1,3 +1,4 @@
+import com.sun.tools.javac.comp.Todo;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,12 +13,24 @@ import java.util.concurrent.TimeUnit;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class driver {
+
+
+    //TODO  implement TestNG or JUNit unit testing framework
+    //TODO remove hardcoded values from the test file. Instead create a separate Object locatior file , Config file
+    //TODO Implement Page Object model for better handling of test code
+
         public static void main(String[] args) throws InterruptedException {
+            //TODO remove hardcoded chromedriver path . try to add dynamic path detection .
+
             System.setProperty("webdriver.chrome.driver","/Users/nelsonanburaj/Downloads/chromedriver_2");
             WebDriver dr = new ChromeDriver();
+            //TODO Implement the other browser logic .
+            //
             dr.get("https://www.phptravels.net/");
             dr.manage().window().maximize();
 
+
+            //TODO Create generic method to handle Wait mechanism
             Wait<WebDriver> wait = new FluentWait<WebDriver>(dr)
 
                     .withTimeout(120, SECONDS)
@@ -47,6 +60,8 @@ public class driver {
             phonenumber=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(("(//*[@class='form-control'])[3]"))));
             phonenumber.sendKeys("9874562153");
 
+
+            //TODO  Get values from the external data source. avoid hard coding
             WebElement email;
             email=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(("(//*[@class='form-control'])[4]"))));
             email.sendKeys("emailid"+randomInt+"@gmail.com");
@@ -159,7 +174,6 @@ public class driver {
             jse4.executeScript("arguments[0].scrollIntoView()",noClick);
             noClick.click();
 
-
             WebElement additionalRequest;
             additionalRequest=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(("(//*[@class='form-control'])[4]"))));
             JavascriptExecutor jse5 = (JavascriptExecutor)dr;
@@ -167,67 +181,11 @@ public class driver {
             additionalRequest.sendKeys("balaji moves automation to development");
 
 
-
-
             WebElement apply;
             apply=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(("//*[text()='CONFIRM THIS BOOKING']"))));
             JavascriptExecutor jse6= (JavascriptExecutor)dr;
             jse6.executeScript("arguments[0].scrollIntoView()",apply);
             apply.click();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             System.out.println("TESTCASES PASSED");
 
